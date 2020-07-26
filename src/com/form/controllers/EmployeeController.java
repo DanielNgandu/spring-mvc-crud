@@ -1,5 +1,7 @@
 package com.form.controllers;
 
+import javax.validation.Valid;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
@@ -23,10 +25,10 @@ public class EmployeeController {
 
 	
 	   @RequestMapping(value = "/addEmployee", method = RequestMethod.POST)
-	    public String submit( @ModelAttribute("employee")Employee employee, 
+	    public String submit(@Valid @ModelAttribute("employee")Employee employee, 
 	      BindingResult result, ModelMap model) {
 	        if (result.hasErrors()) {
-	            return "error";
+	            return "employeeReg";
 	        }
 	        model.addAttribute("name", employee.getName());
 	        model.addAttribute("contactNumber", employee.getContactNumber());

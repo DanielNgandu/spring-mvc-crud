@@ -1,8 +1,15 @@
 package com.form.models;
 
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
 public class Employee {
+	@NotNull(message = "is required.")
+	@Size(min=5,message = "is required.")
 	private String name;
     private long id;
+	@NotNull(message = "is required.")
+	@Size(min=5,message = "is required.")
     private String contactNumber;
 
 	public Employee() {
