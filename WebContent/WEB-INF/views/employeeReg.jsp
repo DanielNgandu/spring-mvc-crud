@@ -14,20 +14,26 @@
           action="addEmployee" modelAttribute="employee">
              <table>
                 <tr>
-                    <td><form:label path="name">Name (*)</form:label></td>
-                    <td><form:input path="name"/>
-                    <form:errors path="name" cssClass="errors"/>
+                    <td><form:label path="first_name">FirstName (*)</form:label></td>
+                    <td><form:input path="first_name"/>
+                    <form:errors path="first_name" cssClass="errors"/>
+                    </td>
+                </tr>
+                 <tr>
+                    <td><form:label path="last_name">LastName (*)</form:label></td>
+                    <td><form:input path="last_name"/>
+                    <form:errors path="last_name" cssClass="errors"/>
                     </td>
                 </tr>
                 <tr>
                     <td><form:label path="id">Id</form:label></td>
-                    <td><form:input path="id"/></td>
+                    <td><form:input path="id" value ="1"/></td>
                 </tr>
                 <tr>
-                    <td><form:label path="contactNumber">
-                      Contact Number (*)</form:label></td>
-                    <td><form:input path="contactNumber"/>
-                        <form:errors path="contactNumber" cssClass="errors"/>
+                    <td><form:label path="email">
+                     Email (*)</form:label></td>
+                    <td><form:input path="email"/>
+                        <form:errors path="email" cssClass="errors"/>
                     
                     </td>
                 </tr>

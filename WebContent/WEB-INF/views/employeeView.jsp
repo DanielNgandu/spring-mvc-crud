@@ -4,22 +4,26 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>View Submitted Info</title>
+<title>Registration Confirmation</title>
 </head>
 <body>
     <h2>Submitted Employee Information</h2>
     <table>
         <tr>
-            <td>Name :</td>
-            <td>${name}</td>
+            <td>FirstName :</td>
+            <td>${first_name}</td>
+        </tr>
+           <tr>
+            <td>LastName :</td>
+            <td>${last_name}</td>
         </tr>
         <tr>
             <td>ID :</td>
             <td>${id}</td>
         </tr>
         <tr>
-            <td>Contact Number :</td>
-            <td>${contactNumber}</td>
+            <td>Email :</td>
+            <td>${email}</td>
         </tr>
     </table>
 </body>

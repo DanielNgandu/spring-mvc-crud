@@ -1,5 +1,7 @@
 package com.form.controllers;
 
+import java.util.List;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.propertyeditors.StringTrimmerEditor;
@@ -14,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.form.models.Employee;
+import com.object.dao.EmployeeDao;
 
 @Controller
 @RequestMapping("/employee")
@@ -39,9 +42,17 @@ public class EmployeeController {
 	        if (result.hasErrors()) {
 	            return "employeeReg";
 	        }
-	        model.addAttribute("name", employee.getName());
-	        model.addAttribute("contactNumber", employee.getContactNumber());
+	        EmployeeDao employeeDao = new EmployeeDao();
+	        Employee employee2 = new Employee(employee.getId(),employee.getFirst_name(), employee.getLast_name(), employee.getEmail());
+	        employeeDao.saveEmployee(employee2);
+	        List <Employee> employees = employeeDao.getEmployees();
+	        employees.forEach(s-> System.out.println(s.getFirst_name()));
+	        
 	        model.addAttribute("id", employee.getId());
+	        model.addAttribute("first_name", employee.getFirst_name());
+	        model.addAttribute("last_name", employee.getLast_name());
+	        model.addAttribute("email", employee.getEmail());
+
 	        return "employeeView";
 	    }
 }
