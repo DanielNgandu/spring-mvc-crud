@@ -43,12 +43,14 @@ public class EmployeeController {
 	            return "employeeReg";
 	        }
 	        EmployeeDao employeeDao = new EmployeeDao();
-	        Employee employee2 = new Employee(employee.getId(),employee.getFirst_name(), employee.getLast_name(), employee.getEmail());
+	        Employee employee2 = new Employee(employee.getFirst_name(), employee.getLast_name(), employee.getEmail());
 	        employeeDao.saveEmployee(employee2);
+	        //get employee object
 	        List <Employee> employees = employeeDao.getEmployees();
 	        employees.forEach(s-> System.out.println(s.getFirst_name()));
-	        
-	        model.addAttribute("id", employee.getId());
+	        	        
+	        //get form data and update our confirmation page
+//	        model.addAttribute("id", employee.getId());
 	        model.addAttribute("first_name", employee.getFirst_name());
 	        model.addAttribute("last_name", employee.getLast_name());
 	        model.addAttribute("email", employee.getEmail());

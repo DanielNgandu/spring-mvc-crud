@@ -27,7 +27,6 @@ public class Employee {
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="id")
-	@Min(value=1,message="Value should be above 0")
     private long id;
 	
 	@Column(name="email")
@@ -39,9 +38,9 @@ public class Employee {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Employee(Long id,String first_name,String last_name, String email) {
+	public Employee(String first_name,String last_name, String email) {
 		super();
-		this.id = id;
+//		this.id = id;
 		this.first_name = first_name;
 		this.last_name = last_name;
 		this.email = email;
@@ -82,7 +81,7 @@ public class Employee {
 
 	@Override
 	public String toString() {
-		return "Employee [first_name=" + first_name + ", last_name=" + last_name + ", id=" + id + ", email=" + email
+		return "Employee [first_name=" + first_name + ", last_name=" + last_name + ", email=" + email
 				+ "]";
 	}
 

@@ -27,7 +27,14 @@ public class EmployeeDao {
 	    }
 	    public List < Employee > getEmployees() {
 	        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
-	            return session.createQuery("from Employee", Employee.class).list();
+	            return session.createQuery("from Employee", Employee.class).getResultList();
 	        }
 	    }
+	    
+	    //get employee by id
+//	    public  Employee getEmployeesById(Employee employee) {
+//	        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+//	            return session.get(Employee.class, employee.)
+//	        }
+//	    }
 	}

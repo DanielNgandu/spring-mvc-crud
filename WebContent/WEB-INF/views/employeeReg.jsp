@@ -2,7 +2,11 @@
 <html>
     <head>
     <title>Employee Registration</title>
+    
+<link rel="stylesheet" href="${pageContext.request.contextPath}/assests/css/bootstrap.min.css"/>
+<script src="${pageContext.request.contextPath}/assests/js/bootstrap.min.js"></script>    
     <style type="text/css">
+   
     .errors{
     color:red
     }
@@ -25,10 +29,7 @@
                     <form:errors path="last_name" cssClass="errors"/>
                     </td>
                 </tr>
-                <tr>
-                    <td><form:label path="id">Id</form:label></td>
-                    <td><form:input path="id" value ="1"/></td>
-                </tr>
+           
                 <tr>
                     <td><form:label path="email">
                      Email (*)</form:label></td>
