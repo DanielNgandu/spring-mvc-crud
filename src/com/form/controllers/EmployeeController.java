@@ -47,7 +47,11 @@ public class EmployeeController {
 	        employeeDao.saveEmployee(employee2);
 	        //get employee object
 	        List <Employee> employees = employeeDao.getEmployees();
-	        employees.forEach(s-> System.out.println(s.getFirst_name()));
+//	        employees.forEach(s-> System.out.println(s.getFirst_name()));
+	        
+	        Employee employee3 = employeeDao.getEmployeesById(employee2.getId());
+	        System.out.println(employee3.getFirst_name());
+	        
 	        	        
 	        //get form data and update our confirmation page
 //	        model.addAttribute("id", employee.getId());

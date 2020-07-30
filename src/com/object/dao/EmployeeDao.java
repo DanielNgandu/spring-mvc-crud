@@ -31,10 +31,17 @@ public class EmployeeDao {
 	        }
 	    }
 	    
+	    //get employee by object
+	    public  Employee getEmployee(Employee employee) {
+	        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+	            return session.createQuery("from Employee e WHERE e.id="+employee.getId(), Employee.class).getSingleResult();
+	        }
+	    }
+	    
 	    //get employee by id
-//	    public  Employee getEmployeesById(Employee employee) {
-//	        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
-//	            return session.get(Employee.class, employee.)
-//	        }
-//	    }
+	    public  Employee getEmployeesById(Long employeeId) {
+	        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+	            return session.get(Employee.class,employeeId);
+	        }
+	    }
 	}
