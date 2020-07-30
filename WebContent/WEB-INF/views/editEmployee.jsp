@@ -4,7 +4,8 @@
     <title>Employee Registration</title>
     
 <link rel="stylesheet" href="${pageContext.request.contextPath}/assests/css/bootstrap.min.css"/>
-<script src="${pageContext.request.contextPath}/assests/js/bootstrap.min.js"></script>    
+<script src="${pageContext.request.contextPath}/assests/js/bootstrap.min.js"></script>   
+ 
     <style type="text/css">
    
     .errors{
@@ -22,6 +23,11 @@
         <form:form method="POST" 
           action="addEmployee" modelAttribute="employee">
              <table>
+	             <tr>
+	                <td><form:label path="id">ID</form:label></td>
+	             
+                    <td><form:input path="id"/>
+	             </tr>
                 <tr>
                     <td><form:label path="first_name">FirstName (*)</form:label></td>
                     <td><form:input path="first_name"/>

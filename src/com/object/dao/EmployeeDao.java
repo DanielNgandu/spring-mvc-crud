@@ -1,6 +1,9 @@
 package com.object.dao;
 
 import java.util.List;
+
+import javax.persistence.Query;
+
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
@@ -44,4 +47,21 @@ public class EmployeeDao {
 	            return session.get(Employee.class,employeeId);
 	        }
 	    }
+	    
+	    
+	    //update employee by object
+	    //get employee by object
+	    public  void updateEmployee(Employee employee) {
+	        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+	        	Query query = session.createQuery("UPDATE Employee  SET first_name =:www ");
+	        	query.setParameter("first_name",employee.getFirst_name());	
+	        	query.setParameter("last_name",employee.getLast_name());	
+	        	query.setParameter("email",employee.getEmail());
+	        	}catch(Exception e) {
+	        System.out.println("Exception ->"+e);
+	        e.printStackTrace();
+	    }
+	    }
+	    
+	    
 	}
