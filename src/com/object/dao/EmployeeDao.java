@@ -53,15 +53,40 @@ public class EmployeeDao {
 	    //get employee by object
 	    public  void updateEmployee(Employee employee) {
 	        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
-	        	Query query = session.createQuery("UPDATE Employee  SET first_name =:www ");
+	        	Query query = session.createQuery("UPDATE Employee e"
+	        			+ " SET e.first_name =:first_name,"
+	        			+ " e.last_name =:last_name,"
+	        			+ " e.email=:email"
+	        			+ " WHERE e.id="+employee.getId());
 	        	query.setParameter("first_name",employee.getFirst_name());	
 	        	query.setParameter("last_name",employee.getLast_name());	
 	        	query.setParameter("email",employee.getEmail());
+	        	int count = query.executeUpdate();
+	        	 System.out.println(count + " Record(s) Updated.");
 	        	}catch(Exception e) {
 	        System.out.println("Exception ->"+e);
 	        e.printStackTrace();
 	    }
 	    }
+		public void deleteEmployee(Employee employee) {
+			// TODO Auto-generated method stub
+		     try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+		    	 Object persistentInstance = session.load(Employee.class,employee.getId());
+		    	 if (persistentInstance != null)  {
+		             session.delete(persistentInstance);
+		             session.getTransaction().commit();
+		             System.out.println ("Deleted Sucessfully"); 
+
+		         }
+		         else {
+		             System.out.println ("Did not find the  Employee Object in persistance");
+
+		         }
+		        	}catch(Exception e) {
+		        System.out.println("Exception ->"+e);
+		        e.printStackTrace();
+		    }
 	    
 	    
 	}
+}

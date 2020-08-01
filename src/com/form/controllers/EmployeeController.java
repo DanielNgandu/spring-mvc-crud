@@ -4,19 +4,20 @@ import java.util.List;
 
 import javax.validation.Valid;
 
-import org.jboss.logging.Param;
 import org.springframework.beans.propertyeditors.StringTrimmerEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.view.RedirectView;
 
 import com.form.models.Employee;
 import com.object.dao.EmployeeDao;
@@ -90,4 +91,40 @@ public class EmployeeController {
 		model.addAttribute(employee);
 		return "editEmployee";
 	}
+	
+	
+	//update employee 
+	@RequestMapping(value = "/updateEmployee", method = RequestMethod.POST)
+	String updateEmployee (@Valid @ModelAttribute("employee")Employee employee, 
+			BindingResult result, ModelMap model) {
+		if (result.hasErrors()) {
+			return "employeeReg";
+		}
+		
+		EmployeeDao employeeDao = new EmployeeDao();
+
+		employeeDao.updateEmployee(employee);
+		System.out.println("Updated!!");
+		return "employeeView";
+		
+	}
+	
+	//delete employee
+    @GetMapping("/deleteEmployee/{employeeId}")
+    public String deleteEmployee(@PathVariable("employeeId") String employeeId, Model model) {
+		EmployeeDao employeeDao = new EmployeeDao();
+
+		Employee employee = employeeDao.getEmployeesById(Long.valueOf(employeeId));
+        employeeDao.deleteEmployee(employee);
+
+    	//get list from dao
+        //get employee obj
+		List<Employee> employeeList = employeeDao.getEmployees();
+		//add list to model
+		
+		model.addAttribute("employeeList", employeeList);
+		
+		return "viewEmployees";
+    }
+
 }

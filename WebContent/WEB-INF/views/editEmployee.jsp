@@ -21,7 +21,7 @@
     <body>
         <h3>Welcome, Enter The Employee Details</h3>
         <form:form method="POST" 
-          action="addEmployee" modelAttribute="employee">
+          action="updateEmployee" modelAttribute="employee">
              <table>
 	             <tr>
 	                <td><form:label path="id">ID</form:label></td>

@@ -36,7 +36,9 @@
 							<td>${y.first_name}</td>
 							<td>${y.last_name}</td>
 							<td>${y.email}</td>
-							<td><a class="btn btn-info" href="editEmployee/${y.id}">Edit</a></td>
+							<td><a class="btn btn-info" href="editEmployee/${y.id}">Edit</a>
+							<a class="btn btn-danger" href="deleteEmployee/${y.id}">Delete</a>
+							</td>
 						</tr>
 				</c:forEach>
 
